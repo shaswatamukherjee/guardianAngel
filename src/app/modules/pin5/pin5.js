@@ -57,21 +57,6 @@ function paymentController($rootScope, $scope, $http) {
     };
 
     self.submitAndMoveToNextPageOnSucess = function (form) {
-        // $rootScope.stateObject.accountNumber = self.userInput.accountNumber;
-        /*if(self.stateObject.origin === 'enrolment') {
-            //It should call the API to complete the enrolment process
-            $http.put('http://vatsla-test.apigee.net/enrollcharitycustomer/enroll?apikey=aqEu4ZlkdGaHQpi0YjNAmwKy4KDjvE26&cause='+ self.stateObject.enrolmentData.cause +'&plan=' + self.stateObject.enrolmentData.plan + '&contribution='+ self.stateObject.enrolmentData.contribution +'&period='+ self.stateObject.enrolmentData.period +'&bban=' + $rootScope.stateObject.accountNumber)
-                .then(function (response) {
-                    if(angular.isDefined(response) && angular.isDefined(response.data) && response.data.enrolled) {
-                        $rootScope.go('finishenrolment');
-                    }
-                },function (response) {
-                    alert('Error: ',response);
-                });
-        } else {
-            //It should go to the confirmation page
-            $rootScope.transitionTo('confirmtikkie');
-        }*/
         $rootScope.transitionTo('main.userDetails');
     };
 }
