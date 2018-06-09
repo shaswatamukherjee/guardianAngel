@@ -3,7 +3,7 @@ import angular from 'angular';
 export default angular.module('guardianAngel.main.applicationForm', [])
     .controller('applicationForm', applicationForm)
 
-function applicationForm($rootScope, $scope, commonService) {
+function applicationForm($rootScope, commonService) {
     var self = this;
     self.init = function() {
         commonService.getCall();
@@ -13,7 +13,7 @@ function applicationForm($rootScope, $scope, commonService) {
     self.goNext = function(validation){
         console.log("validation : - "+ validation);
         if(validation != undefined && validation != 0){
-            self.initIndicator = false;
+            $rootScope.transitionTo('main.pin5');
         }
     };
 }

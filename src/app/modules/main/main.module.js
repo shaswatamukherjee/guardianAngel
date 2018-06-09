@@ -8,7 +8,7 @@ function mainController($rootScope, $scope) {
     var self = this;
 
     self.init = function(){
-        $rootScope.transitionTo('main.userDetails');
+        $rootScope.transitionTo('main.applicationForm');
     };
 
     $scope.tabClicked = function (item) {

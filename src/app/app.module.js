@@ -16,7 +16,7 @@ angular.module('guardianAngel', [
     'guardianAngel.main',
     'guardianAngel.main.userDetails',
     'guardianAngel.main.applicationForm',
-    'pin5',
+    'main.ideal',
     'service.spinner',
     'guardianAngelservice'
 ])
@@ -39,7 +39,7 @@ angular.module('guardianAngel', [
                 templateUrl: 'app/modules/applicationForm/applicationForm.html',
                 params: {stateObject: {}}
             })
-            .state('pin5', {
+            .state('main.pin5', {
                 url: '/pin5',
                 templateUrl: 'app/modules/pin5/pin5.html',
                 params: {stateObject: {}}
