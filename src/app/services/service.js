@@ -6,38 +6,28 @@ export default angular.module('guardianAngelservice', [])
 function commonService($http) {
     var self = this;
 
-    self.getCall = function (param){
-        console.log("Inside get Call");
-        $http({
-            method: 'GET',
-            url: '/someUrl',
-            param: param
-        }).then(function successCallback(response) {
-
-        }, function errorCallback(response) {
-
-        });
-    };
-
-    self.createCall = function (requestData){
+    self.createUser = function(requestData){
         $http({
             method: 'POST',
-            url: '/someUrl',
+            url: 'https://prg5uzp18h.execute-api.eu-central-1.amazonaws.com/prod/addcustomer',
             data: requestData
-        }).then(function successCallback(response) {
-
-        }, function errorCallback(response) {
+        }).then(function (response) {
+            console.log(response);
+        }, function (response) {
 
         });
     };
 
-    self.updateCall = function (param,requestData){
+    self.createSMS = function(requestData){
+        console.log(requestData);
         $http({
-            method: 'PUT',
-            url: '/someUrl'
-        }).then(function successCallback(response) {
-
-        }, function errorCallback(response) {
+            url: 'https://api-prd.kpn.com/messaging/sms-kpn/v1/send',
+            method: 'POST',
+            data: requestData,
+            headers: {'Control-cache':'no cache','Authorization':'BearerToken eK2gZ3DoecjFRjToQh1t7nDjmUm4'}
+        }).then(function (response) {
+              console.log(response);
+        }, function (response) {
 
         });
     };

@@ -7,3 +7,5 @@ exclude:
 - /styles/.*
 - .*/gulpfile\.js
 - .*/karma.conf\.js
+- /build/.*
+- .*/serviceProxyServer\.js
