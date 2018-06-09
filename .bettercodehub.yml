@@ -4,6 +4,7 @@ languages:
 exclude:
 - /dist/.*
 - /node_modules/.*
+- .*/systemjs.config\.js
 - /styles/.*
 - .*/gulpfile\.js
 - .*/karma.conf\.js

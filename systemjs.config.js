@@ -10,10 +10,7 @@ System.config({
   paths: {
     "npm:*": "node_modules/*",
     "module/": "app/modules/",
-    "modalTemplate/": "app/modalTemplates/",
-    "directive/": "app/directives/",
     "service/": "app/services/",
-    "provider/": "app/providers/",
     "vendor/": "vendor/"
   },
   map: {
