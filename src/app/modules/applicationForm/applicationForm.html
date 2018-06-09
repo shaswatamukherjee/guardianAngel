@@ -1,0 +1,22 @@
+<form name="application" data-novalidate data-ng-submit ng-controller="applicationForm as applicationForm" ng-init="applicationForm.init()">
+    <div ng-if="applicationForm.initIndicator">
+        <div class="col-sm-12">
+            <h3>Apply for Guardian And Angel</h3>
+            <hr>
+        </div>
+        <div class="col-sm-12">
+            <label>Guardian and Angel is the service provided by the bank in a very unique and different ways </label>
+        </div>
+        <div class="col-sm-12">
+            <input type="checkbox" name="checkBox" class="form-check-input" id="checkbox" ng-model="applicationForm.userAgreed">
+            <label class="form-check-label" >Select check box to agree to the terms and conditions given above</label>
+        </div>
+        <div class="col-sm-12">
+            <button class="btn btn-primary" ng-click="applicationForm.goNext(applicationForm.userAgreed);">Apply</button>
+        </div>
+    </div>
+    <div ng-if="!applicationForm.initIndicator">
+        <label>Your Gardian And Angel is watching You !</label>
+        <label>Enjoy fear free Life</label>
+    </div>
+</form>

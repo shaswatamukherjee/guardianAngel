@@ -1,0 +1,31 @@
+<div id="page" ng-controller="mainController as mainCtrl">
+    <div id="header" ng-init="mainCtrl.init()">
+        <nav class="nav-header" role="navigation">
+            <div class="nav-header-primary">
+                <ul id="top-menu" class="nav">
+                    <li ng-class="{'active-list-item': selectedListItem === 'applicationForm'}">
+                        <a ng-click="tabClicked('applicationForm')">ApplicationForm</a>
+                    </li>
+                    <li ng-class="{'active-list-item': selectedListItem === ''}">
+                        <a>Help</a>
+                    </li>
+                    <li ng-class="{'active-list-item': selectedListItem === ''}">
+                        <a>Contacts</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-header-primary-right">
+                <ul id="top-menu" class="nav">
+                    <li ng-class="{'active-list-item': selectedListItem === ''}">
+                        <a>Shaswata M</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="main-area">
+        <div class="container clearfix">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>
