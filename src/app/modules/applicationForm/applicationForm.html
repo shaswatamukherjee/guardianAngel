@@ -5,25 +5,36 @@
             <hr>
         </div>
         <div class="form-group">
-            <label>Guardian Angel is the service provided by the bank in a very unique and different ways </label>
+            <label>By subscribing to ABN AMRO Guardian Angel, I understand that:</label>
         </div>
         <div class="form-group">
             <div class="checkbox">
                 <input
                     type="checkbox"
-                    id="remember-credentials-checkbox"
+                    id="location-checkbox"
                     name="rememberAccount"
-                    ng-model="applicationForm.userAgreed"
+                    ng-model="applicationForm.location"
                     aria-hidden="false">
-                <label for="remember-credentials-checkbox">Select check box to agree to the terms and conditions given above</label>
+                <label for="location-checkbox">My location can be traced by ABN AMRO Bank N.V. to find me in a disaster zone.</label>
             </div>
         </div>
-        <div class="ocf-primary-switch">
-            <button class="btn btn-primary-yellow" ng-click="applicationForm.goNext(applicationForm.userAgreed);">Apply</button>
+        <div class="form-group">
+            <div class="checkbox">
+                <input
+                    type="checkbox"
+                    id="contact-checkbox"
+                    name="rememberAccount"
+                    ng-model="applicationForm.contact"
+                    aria-hidden="false">
+                <label for="contact-checkbox">My personal details such as contact information may be shared by ABN AMRO Bank N.V. with Embassy and registered local NGOs to provide me life saving services.</label>
+            </div>
         </div>
-    </div>
-    <div ng-if="!applicationForm.initIndicator">
-        <label>Your Gardian And Angel is watching You !</label>
-        <label>Enjoy fear free Life</label>
+        <div class="form-group">
+            <p>You may choose to unsubscribe from this service anytime.</p>
+            <p>We will process you details in accordance with our <a href="#">privacy policy</a></p>
+        </div>
+        <div class="ocf-primary-switch">
+            <button class="btn btn-primary-yellow" ng-click="applicationForm.goNext(applicationForm.location && applicationForm.contact);">Submit</button>
+        </div>
     </div>
 </form>
